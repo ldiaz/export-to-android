@@ -138,13 +138,15 @@ function saveFunc(dpi) {
 	var Name = docRef2.name.replace(/\.[^\.]+$/, ''), 
 		Ext = decodeURI(docRef2.name).replace(/^.*\./,''), 
 		Path = docRef.path,
-		folder = Folder(Path + '/' + docName + '-assets/' + 'drawable-' + dpi);
+		folder = Folder(Path + '/' + docName + '-assets');
+		
+		//folder = Folder(Path + '/' + docName + '-assets/' + 'drawable-' + dpi);
 		
 	if(!folder.exists) {
 		folder.create();
 	}
 
-	var saveFile = File(folder + "/" + Name + ".png");
+	var saveFile = File(folder + "/" + Name+"_"+ dpi + ".png");
 
 	var sfwOptions = new ExportOptionsSaveForWeb(); 
 		sfwOptions.format = SaveDocumentType.PNG; 
